@@ -46,24 +46,29 @@ export default function form() {
 
     const submitData = (e) => {
       e.preventDefault();
-     console.log(username, password);
+      alert(username);
     }
 
   return(
     <>
-     <h1>{username}</h1>
-    <h1>{password}</h1>
+     <form onSubmit={submitData}>
+
       <input
+        type='text'
         value = {username}
         onChange={(e) => setUsername(e.target.value)}
       ></input>
       {" "}
       <input
+      type='text'
       value = {password}
       onChange={(e) => setPassword(e.target.value)}>
       </input>
 
-      <button onClick={submitData}>SUBMIT</button>
+      <input type='submit'/>
+      <p>Current value: {username}</p>
+
+     </form>
     </>
   )
 }
