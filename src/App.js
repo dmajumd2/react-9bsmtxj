@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {BrowserRouter, Routes, Route, Link, useParams} from 'react-router-dom';
 import './style.css';
 
 // export default function app() {
@@ -73,25 +74,48 @@ import './style.css';
 //   )
 // }
 
-export default function Form() {
-  const [car, setCar] = useState({
-    model:"Ford",
-    color:"Red",
-    year:"1990",
-    mileage:"30"
-  })
-  const setCarDetails = () => {
-    setCar(previousState => {
-        return {...previousState, color:"blue"}
-    })
-  }
-  return(
-    <>
-        <h1>{car.model}</h1>
-        <p>
-        It is a {car.color} {car.model} from {car.year}.
-        </p>
-        <button type="button" onClick={setCarDetails}>+</button>
-    </>
+// export default function Form() {
+//   const [car, setCar] = useState({
+//     model:"Ford",
+//     color:"Red",
+//     year:"1990",
+//     mileage:"30"
+//   })
+//   const setCarDetails = () => {
+//     setCar(previousState => {
+//         return {...previousState, color:"blue"}
+//     })
+//   }
+//   return(
+//     <>
+//         <h1>{car.model}</h1>
+//         <p>
+//         It is a {car.color} {car.model} from {car.year}.
+//         </p>
+//         <button type="button" onClick={setCarDetails}>+</button>
+//     </>
+//   )
+// }
+
+
+function Info() {
+  const { firstname } = useParams();
+  return <h1>Hello, {firstname}!</h1>;
+}
+
+export default function App(){
+
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to='/customer/Emit'>Emit</Link>
+        <Link to='/customer/Tobi'></Link>
+        <Link to='/customer/Linus'></Link>
+      </nav>
+
+      <Routes>
+        <Route path="/customer/:firstname" element={<Info/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
