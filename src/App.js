@@ -40,35 +40,58 @@ import './style.css';
 //   );
 // }
 
-export default function form() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+// export default function form() {
+//     const [username, setUsername] = useState("");
+//     const [password, setPassword] = useState("");
 
-    const submitData = (e) => {
-      e.preventDefault();
-      alert(username);
-    }
+//     const submitData = (e) => {
+//       e.preventDefault();
+//       alert(username);
+//     }
 
+//   return(
+//     <>
+//      <form onSubmit={submitData}>
+
+//       <input
+//         type='text'
+//         value = {username}
+//         onChange={(e) => setUsername(e.target.value)}
+//       ></input>
+//       {" "}
+//       <input
+//       type='text'
+//       value = {password}
+//       onChange={(e) => setPassword(e.target.value)}>
+//       </input>
+
+//       <input type='submit'/>
+//       <p>Current value: {username}</p>
+
+//      </form>
+//     </>
+//   )
+// }
+
+export default function Form() {
+  const [car, setCar] = useState({
+    model:"Ford",
+    color:"Red",
+    year:"1990",
+    mileage:"30"
+  })
+  const setCarDetails = () => {
+    setCar(previousState => {
+        return {...previousState, color:"blue"}
+    })
+  }
   return(
     <>
-     <form onSubmit={submitData}>
-
-      <input
-        type='text'
-        value = {username}
-        onChange={(e) => setUsername(e.target.value)}
-      ></input>
-      {" "}
-      <input
-      type='text'
-      value = {password}
-      onChange={(e) => setPassword(e.target.value)}>
-      </input>
-
-      <input type='submit'/>
-      <p>Current value: {username}</p>
-
-     </form>
+        <h1>{car.model}</h1>
+        <p>
+        It is a {car.color} {car.model} from {car.year}.
+        </p>
+        <button type="button" onClick={setCarDetails}>+</button>
     </>
   )
 }
