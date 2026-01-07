@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useRef, useState, useEffect } from 'react';
 import {BrowserRouter, Routes, Route, Link, useParams} from 'react-router-dom';
 import './style.css';
 
@@ -98,24 +98,99 @@ import './style.css';
 // }
 
 
-function Info() {
-  const { firstname } = useParams();
-  return <h1>Hello, {firstname}!</h1>;
-}
+// function Info() {
+//   const { firstname } = useParams();
+//   return <h1>Hello, {firstname}!</h1>;
+// }
+
+// export default function App(){
+
+//   return (
+//     <BrowserRouter>
+//       <nav>
+//         <Link to='/customer/Emit'>Emit</Link>
+//         <Link to='/customer/Tobi'></Link>
+//         <Link to='/customer/Linus'></Link>
+//       </nav>
+
+//       <Routes>
+//         <Route path="/customer/:firstname" element={<Info/>}/>
+//       </Routes>
+//     </BrowserRouter>
+//   )
+// }
+
+
+// export default function App(){
+
+
+// const inputRef = useRef(null);
+
+// <><input ref={inputRef} />
+// <button onClick={() => inputRef.current.focus()}>
+//   Focus
+// </button></>
+
+// }
+
+
+// export default function App(){
+//   const [count, setCount] = useState(0);
+//   return (
+//     <>
+//         Counter is : {count}
+//         <button onClick={() => setCount(count+1)}>Add</button>
+//         <button onClick={() => setCount(count > 0 ? count-1 : 0)}>subtract</button>
+//     </>
+//   )
+// }
+
+// export default function App(){
+//   const [users, setUsers] = useState([]);
+
+//   useEffect(() => {
+//           fetch("https://jsonplaceholder.typicode.com/users")
+//           .then((res) => res.json())
+//           .then((data) => setUsers(data));
+//   }, [])
+
+
+//   return (
+//     <>
+//        <ul>
+//         {
+//           users.map((user)=>(
+//             <li key={user.id}>{user.name}.     {user.email}</li>
+           
+//           ))
+//         }
+//        </ul>
+//     </>
+//   )
+
+// }
+
 
 export default function App(){
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+          fetch("https://jsonplaceholder.typicode.com/users")
+          .then((res) => res.json())
+          .then((data) => setUsers(data));
+  }, [])
 
   return (
-    <BrowserRouter>
-      <nav>
-        <Link to='/customer/Emit'>Emit</Link>
-        <Link to='/customer/Tobi'></Link>
-        <Link to='/customer/Linus'></Link>
-      </nav>
-
-      <Routes>
-        <Route path="/customer/:firstname" element={<Info/>}/>
-      </Routes>
-    </BrowserRouter>
+    <>
+       <ul>
+        {
+          users.map((user)=>(
+            <li key={user.id}>{user.name}.{user.email}</li>
+           
+          ))
+        }
+       </ul>
+    </>
   )
+
 }
