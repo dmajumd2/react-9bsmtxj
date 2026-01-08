@@ -171,26 +171,26 @@ import './style.css';
 // }
 
 
-export default function App(){
-  const [users, setUsers] = useState([]);
+// export default function App(){
+//   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-          fetch("https://jsonplaceholder.typicode.com/users")
-          .then((res) => res.json())
-          .then((data) => setUsers(data));
-  }, [])
+//   useEffect(() => {
+//           fetch("https://jsonplaceholder.typicode.com/users")
+//           .then((res) => res.json())
+//           .then((data) => setUsers(data));
+//   }, [])
 
-  return (
-    <>
-       <ul>
-        {
-          users.map((user)=>(
-            <li key={user.id}>{user.name}.{user.email}</li>
+//   return (
+//     <>
+//        <ul>
+//         {
+//           users.map((user)=>(
+//             <li key={user.id}>{user.name}.{user.email}</li>
            
-          ))
-        }
-       </ul>
-    </>
-  )
+//           ))
+//         }
+//        </ul>
+//     </>
+//   )
 
-}
+// }
