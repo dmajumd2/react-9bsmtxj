@@ -8,12 +8,16 @@ import Timer from './Timer';
 import Counter from './Counter';
 import List from './List';
 import Input from './Input';
+import Toggle from './Toggle';
+import FetchAPI from './Fetch';
+import CountdownTimer from './CountdownTimer';
+import Color from './Color';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <Input/>
+    <Color/>
   </StrictMode>
 );
